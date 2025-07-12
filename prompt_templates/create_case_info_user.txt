@@ -1,0 +1,7 @@
+**Facts of the case:**
+
+{FACTS}
+
+**Decision of the court:**
+
+{DECISION}

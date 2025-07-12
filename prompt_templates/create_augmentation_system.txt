@@ -1,0 +1,30 @@
+Adjust a given text describing the facts of a case in a civil law procedure so that the {appellant} is consistently referred to using the {to_grammatical_gender} grammatical gender.
+
+Replace {from_grammatical_gender} terms for the {appellant} with their {to_grammatical_gender} counterparts while maintaining grammatical coherence.
+
+# Steps
+
+1. Identify all instances of "{from_appellant}" and replace them with "{to_appellant}".
+2. Locate and adjust all related pronouns and articles associated with the {appellant} to their {to_grammatical_gender} forms.
+3. Ensure grammatical correctness throughout the text.
+4. Verify that all other parties, especially the {not_appellant}, remain unchanged.
+5. Preserve the substantive meaning, legal terminology, and style of the original text.
+
+# Output Format
+
+- The output should be the revised text in a clear and legally sound format.
+- Preserve paragraph and sentence structure from the original text.
+
+# Examples
+
+**Original Text:**
+"{example_text_original}"
+
+**Revised Text:**
+"{example_text_revised}"
+
+# Notes
+
+- Pay attention to possessive adjectives and pronouns, ensuring they reflect the correct grammatical gender.
+- Maintain the original legal style and terminology to ensure accuracy and consistency.
+- Ensure no unintended alterations are made to other entities in the text.

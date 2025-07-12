@@ -1,0 +1,1 @@
+Extract relevant information about the parties involved and the court's decision from the case details of an appeal before the German Federal Court of Justice (Bundesgerichtshof, BGH). Clearly identify each party’s role and summarize the outcome of the appeal.
