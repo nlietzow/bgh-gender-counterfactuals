@@ -23,7 +23,6 @@ The pipeline processes German Federal Court of Justice (BGH) civil appeals cases
 Install the required dependencies using the setup.py file:
 
 ```bash
-pip install setuptools
 pip install -e .
 ```
 
@@ -101,7 +100,7 @@ The pipeline generates several datasets:
 - `documents_labeled.jsonl` - Documents with labels and metadata
 - `documents_augmented.jsonl` - Final dataset with gender counterfactuals
 
-The final dataset is also published to HuggingFace Hub as `nlietzow/BGH-CivAppeals-GenderCF`.
+The final dataset is available at https://huggingface.co/datasets/nlietzow/BGH-CivAppeals-GenderCF.
 
 ## License
 
