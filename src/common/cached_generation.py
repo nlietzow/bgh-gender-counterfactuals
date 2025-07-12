@@ -9,7 +9,7 @@ from enum import Enum
 from hashlib import md5
 from typing import Optional, TypeVar
 
-from openai import AsyncOpenAI, APIConnectionError, RateLimitError
+from openai import APIConnectionError, AsyncOpenAI, RateLimitError
 from pydantic import BaseModel
 from tenacity import (
     retry,

@@ -11,11 +11,11 @@ from httpx import URL
 
 from src.common import config
 from src.common.types import (
+    DocumentAugmented,
     DocumentLabeled,
     DocumentParsed,
     DocumentText,
     ScrapingID,
-    DocumentAugmented,
 )
 
 

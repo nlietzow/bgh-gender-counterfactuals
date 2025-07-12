@@ -11,15 +11,14 @@ from itertools import batched
 from tqdm import tqdm
 
 from src.augmentation._prompt import AugmentationPrompt
-from src.common import prompts
-from src.common import config, cached_generation
+from src.common import cached_generation, config, prompts
 from src.common.types import (
     Appellant,
-    GrammaticalGender,
-    LegalPartyType,
+    Decision,
     DocumentAugmented,
     DocumentLabeled,
-    Decision,
+    GrammaticalGender,
+    LegalPartyType,
 )
 from src.common.utils import flatten_text, load_documents_labeled
 

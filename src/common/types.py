@@ -3,7 +3,7 @@ This module contains the type definitions used in the package.
 """
 
 from enum import Enum
-from typing import TypedDict, Literal
+from typing import Literal, TypedDict
 from uuid import UUID
 
 from httpx import URL

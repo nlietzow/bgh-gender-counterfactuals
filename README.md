@@ -66,6 +66,23 @@ The notebook contains four main sections:
 - Creates HuggingFace dataset format
 - Uploads dataset to HuggingFace Hub
 
+### Bias Analysis
+
+To analyze gender bias in legal decision predictions, run the bias analysis notebook:
+
+```bash
+jupyter notebook notebooks/bias_analysis.ipynb
+```
+
+This notebook demonstrates:
+- **Baseline Model Training**: Creates a text classification model using TF-IDF and Naive Bayes
+- **Bias Detection**: Tests for gender bias by comparing predictions on original vs. gender-swapped case facts
+- **Statistical Analysis**: Uses t-tests to measure bias significance
+- **Bias Mitigation**: Shows how data augmentation with counterfactuals can reduce bias
+- **Performance Evaluation**: Compares model accuracy before and after bias mitigation
+
+The analysis reveals how gender-related language in legal cases can influence automated decision predictions and provides a methodology for detecting and reducing such biases.
+
 ### Configuration
 
 The project uses environment variables for configuration. Create a `.env` file with:
@@ -85,7 +102,8 @@ bgh-gender-counterfactuals/
 │   ├── labeling/          # Document labeling
 │   └── augmentation/      # LLM-based augmentation
 ├── notebooks/             # Jupyter notebooks
-│   └── main.ipynb        # Main pipeline notebook
+│   ├── main.ipynb        # Main pipeline notebook
+│   └── bias_analysis.ipynb # Gender bias analysis example
 ├── data/                  # Generated datasets
 ├── prompt_templates/      # LLM prompt templates
 ├── cache/                 # Cached API responses

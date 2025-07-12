@@ -9,12 +9,11 @@ import uuid
 from itertools import count
 from typing import List
 
-from httpx import AsyncClient, URL
+from httpx import URL, AsyncClient
 from lxml import html
 from tqdm import tqdm
 
-from src.common import cached_request
-from src.common import config
+from src.common import cached_request, config
 from src.common.types import ScrapingID
 from src.common.utils import flatten_text
 

@@ -13,7 +13,9 @@ from dotenv import load_dotenv
 _project_dir: Path = Path(__file__).resolve().parent.parent.parent
 
 # Load environment variables from a .env file located in the project's root directory.
-assert load_dotenv(dotenv_path=_project_dir / ".env"), "No .env file found in project root directory. See README."
+assert load_dotenv(
+    dotenv_path=_project_dir / ".env"
+), "No .env file found in project root directory. See README."
 
 # Retrieve the OpenAI API key and other tokens from environment variables.
 OPENAI_API_KEY: Optional[str] = os.getenv("OPENAI_API_KEY")

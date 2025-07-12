@@ -13,7 +13,7 @@ import gzip
 import hashlib
 from typing import Optional
 
-from httpx import AsyncClient, HTTPError, URL
+from httpx import URL, AsyncClient, HTTPError
 from tenacity import (
     retry,
     retry_if_exception_type,

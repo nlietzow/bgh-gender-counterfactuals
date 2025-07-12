@@ -8,9 +8,8 @@ from itertools import batched
 
 from tqdm.auto import tqdm
 
-from src.common import prompts
-from src.common import config, cached_generation
-from src.common.types import DocumentLabeled, DocumentParsed, Message, Appellant
+from src.common import cached_generation, config, prompts
+from src.common.types import Appellant, DocumentLabeled, DocumentParsed, Message
 from src.common.utils import load_documents_parsed
 from src.labeling._model import CaseInfo
 
