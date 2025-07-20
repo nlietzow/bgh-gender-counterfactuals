@@ -20,6 +20,7 @@ setup(
         "scikit-learn==1.7.0",
         "datasets==4.0.0",
         "jupyter==1.1.1",
+        "spacy==3.8.7",
     ],
     classifiers=[
         "Development Status :: 3 - Alpha",

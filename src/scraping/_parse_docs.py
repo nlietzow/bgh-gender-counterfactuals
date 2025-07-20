@@ -9,11 +9,14 @@ import json
 import re
 from typing import Generator, Optional
 
+import spacy
 from tqdm import tqdm
 
 from src.common import config
 from src.common.types import DocumentParsed, DocumentText
 from src.common.utils import flatten_text, load_documents_text
+
+NLP = spacy.load("de_core_news_lg")
 
 URTEIL_PATTERN = re.compile(
     r"\s*(?:\S+\s+)?BUNDESGERICHTSHOF\s+IM\s+NAMEN\s+DES\s+VOLKES\s+URTEIL\s+",
@@ -29,19 +32,7 @@ TENOR_TATBESTAND_PATTERN = re.compile(
     r"\s*\n.*",
     re.DOTALL | re.IGNORECASE,
 )
-
-SMALL_LETTER_PATTERN = f"[a-zäöüß]"
-FILLER_WORDS_PATTERN = r"|".join(
-    rf"{x}\b"
-    for x in (
-        "und",
-        "oder",
-        "sowie",
-    )
-)
-LINEBREAKS_PATTERN = re.compile(
-    rf"({SMALL_LETTER_PATTERN})-\s+(?!{FILLER_WORDS_PATTERN})({SMALL_LETTER_PATTERN})"
-)
+LINE_BREAK_PATTERN = re.compile(r"(\w+)-\s+(\w+)")
 
 
 def parse_docs():
@@ -92,6 +83,26 @@ def _process(text: str) -> str:
     """
     Final cleanup for tenor/tatbestand: remove extraneous hyphens, strip whitespace, etc.
     """
+    text = re.sub(r"(\b)\.{3,}(\b)", "\1…\2", text)
+    text = re.sub(r"…[…\s]*…", r"…", text)
+    text = re.sub(r"\.[.\s]*\.", r".", text)
+    text = re.sub(r"\s+([.,;:!?)\]}/])", r"\1", text)
+    text = re.sub(r"([(\[{/])\s+", r"\1", text)
+
     text = flatten_text(text)
-    text = LINEBREAKS_PATTERN.sub(r"\1\2", text)
+    text = LINE_BREAK_PATTERN.sub(_fix_linebreaks, text)
+
     return text.strip()
+
+
+def _fix_linebreaks(match):
+    """
+    Fixes line breaks in the text by checking the token shapes and conjunctions.
+    """
+    doc = NLP(match.group(0))
+    assert len(doc) == 2, "Expected two tokens in the doc."
+    if doc[1].pos_ == "CCONJ" or doc[1].text == "bzw":
+        return match.group(0)
+    elif doc[0].shape_.endswith("x-") and doc[1].shape_.startswith("x"):
+        return match.group(1) + match.group(2)
+    return match.group(0).replace(" ", "")

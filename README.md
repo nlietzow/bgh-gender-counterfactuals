@@ -24,6 +24,7 @@ Install the required dependencies using the setup.py file:
 
 ```bash
 pip install -e .
+python -m spacy download de_core_news_lg
 ```
 
 This will install all required packages including:
@@ -33,6 +34,7 @@ This will install all required packages including:
 - PDF processing (pymupdf==1.26.3, lxml==6.0.0)
 - ML datasets (datasets==4.0.0)
 - Jupyter notebook (jupyter==1.1.1)
+- Natural language processing (spacy==3.8.7)
 - Utilities (tqdm, pydantic, tenacity, python-dotenv)
 
 ## Usage
